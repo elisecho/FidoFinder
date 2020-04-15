@@ -1,0 +1,19 @@
+{% extends "ff_app/base.html" %}
+
+{% block header %}
+<h3>Create an account</h3>
+{% endblock header %}
+
+{% block content %}
+
+<p>Welcome to Finding Fido's web application... please self-register an account to begin using our service.</p>
+
+  <form method="post" action="{% url 'users:register' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+        
+    <button name="submit">Register</button>
+    <input type="hidden" name="next" value="{% url 'ff_app:index' %}" />
+  </form>
+    
+{% endblock content %}

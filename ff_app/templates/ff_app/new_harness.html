@@ -1,0 +1,14 @@
+{% extends 'ff_app/base.html' %} 
+
+{% block content %}
+	
+	<p><a href="{% url 'ff_app:pet' pet.id %}">{{ pet }}</a></p>
+
+	<p>Add a New Harness:</p>
+	<form action="{% url 'ff_app:new_harness' pet.id %}" method='post'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name="submit">add harness</button>
+	</form>
+
+{% endblock content %}

@@ -1,0 +1,3 @@
+ff_env/
+_pycache__/
+*.sqlite3
