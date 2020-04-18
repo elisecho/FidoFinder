@@ -24,11 +24,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'os17l3k#g-fxbchwe=rqm=5qh^-xp&k-y6xi%i2ky^usqtry-r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# for Heroku use - DEBUG = False
+DEBUG = True
 
 # Allow only Heroku to host the project.
-ALLOWED_HOSTS = ['finding-fido.herokuapp.com']
-
+# For Heroku use - ALLOWED_HOSTS = ['finding-fido.herokuapp.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -82,13 +83,13 @@ WSGI_APPLICATION = 'ff_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -130,13 +131,14 @@ BOOTSTRAP4 = {
     'include_jquery': True,
     }
 
-# Heroku settings
+# Heroku settings uncomment the below settings for Prod Heroku
+'''
 os.getcwd() == '/app'
 import dj_database_url
 DATABASES = {
     'default': dj_database_url.config(default='postgres://localhost')
     }
-    
+'''    
 # Honor the 'X-Forwarded-Proto' header for request.is_secure().
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
         
