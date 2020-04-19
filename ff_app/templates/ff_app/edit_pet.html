@@ -2,9 +2,8 @@
 
 {% block content %}
 	
-	<p><a href="{% url 'ff_app:pet' pet.id %}">{{ pet }}</a></p>
+	<p>Editing <a href="{% url 'ff_app:pet' pet.id %}"> {{ pet }}</a></p>
 
-	<p>Edit an Existing Harness:</p>
 	<form action="{% url 'ff_app:edit_pet' pet.id %}" method='post'>
 		{% csrf_token %}
 		{{ form.as_p }}
