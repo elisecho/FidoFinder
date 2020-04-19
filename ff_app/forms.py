@@ -4,8 +4,10 @@ from .models import Pet, Harness
 class PetForm(forms.ModelForm):
     class Meta:
         model = Pet
-        fields = ['name']
-        labels = {'name': 'Pet\'s name'}
+        fields = ['name', 'description']
+        labels = {'name': 'Pet\'s name',
+                  'description': 'Pet\'s description'
+                 }
 
 class HarnessForm(forms.ModelForm):
     class Meta:

@@ -20,6 +20,9 @@ urlpatterns = [
     
     # A form for users to edit an existing harness
     path('edit_harness/<int:harness_id>/', views.edit_harness, name='edit_harness'),
+    
+    # A form for users to edit an existing pet
+    path('edit_pet/<int:pet_id>/', views.edit_pet, name='edit_pet'),
 
     #change password page
     path('change_password/', views.change_password, name='change_password'),

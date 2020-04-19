@@ -100,6 +100,28 @@ def edit_harness(request, harness_id):
     return render(request, 'ff_app/edit_harness.html', context)
 
 @login_required
+def edit_pet(request, pet_id):
+    '''edit an existing pet'''
+    pet = Pet.objects.get(id=pet_id)
+    
+    #validate requesting user is the pet's owner before making the change.
+    if pet.owner != request.user:
+        raise Http404
+    
+    if request.method != 'POST':
+        # Initial request; pre-fill form with the current harness information
+        form = PetForm(instance=pet)
+    else:
+        # POST data submitted; process the data.
+        form = PetForm(instance=pet, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('ff_app:pet', args=[pet.id]))
+        
+    context = {'pet': pet, 'form': form}
+    return render(request, 'ff_app/edit_pet.html', context)
+
+@login_required
 def change_password(request):
     '''view for users to change their password, using a standard PasswordChangeForm
     located in django.contrib.auth.forms library, NOT in the forms.py script'''
