@@ -140,16 +140,4 @@ def success(request):
     return render(request, 'ff_app/success.html')
             
 
-@login_required
-def owner(request, owner_id):
-    '''Show a single pet and associated information'''
-    owner = Owner.objects.get(id=owner_id)
-    
-    # Validate the pet belongs to the logged in user before returning data
-    if owner.user_id != request.user:
-        raise Http404
-    
-
-    context = {'owner': owner}
-    return render(request, 'ff_app/owner.html', context)
             

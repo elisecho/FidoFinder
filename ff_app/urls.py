@@ -29,7 +29,4 @@ urlpatterns = [
     
     #successful password change notice
     path('success/', views.success, name='success'),
-
-    #Page for viewing Owner details
-    path('owner/<int:owner_id>/', views.owner, name='owner'),
 ]
