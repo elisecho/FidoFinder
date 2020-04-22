@@ -22,3 +22,14 @@ class Harness(models.Model):
     def __str__(self):
         '''return a string representing a harness'''
         return self.harnessID
+
+#Author: Elise
+class Owner(models.Model):
+    '''A model of a pet's owner'''
+    user_id = models.ForeignKey(User, on_delete = models.CASCADE)
+    first_name = models.CharField(max_Length=50)
+    last_name = models.CharField(max_length=50)
+    address = models.CharField()
+    def __str__(self):
+        '''return a string representing owner'''
+        return self.first_name
