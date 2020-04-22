@@ -149,7 +149,6 @@ def owner(request, owner_id):
     if owner.user_id != request.user:
         raise Http404
     
-
     context = {'owner': owner}
     return render(request, 'ff_app/owner.html', context)
             
