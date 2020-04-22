@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 
-from .models import Pet, Harness
+from .models import Pet, Harness, Owner
 from .forms import PetForm, HarnessForm
 
 # Create your views here.
