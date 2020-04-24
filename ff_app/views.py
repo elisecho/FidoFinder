@@ -26,11 +26,11 @@ def pets(request):
 def pet(request, pet_id):
     '''Show a single pet and associated information'''
     pet = Pet.objects.get(id=pet_id)
-    
+
     # Validate the pet belongs to the logged in user before returning data
     if pet.owner != request.user:
         raise Http404
-    
+
     harnesses = pet.harness_set.order_by('-date_added')
     context = {'pet': pet, 'harnesses': harnesses}
     return render(request, 'ff_app/pet.html', context)
@@ -50,7 +50,7 @@ def new_pet(request):
             new_pet.owner = request.user
             new_pet.save()
             return HttpResponseRedirect(reverse('ff_app:pets'))
-    
+
     context = {'form': form}
     return render(request, 'ff_app/new_pet.html', context)
 
@@ -59,7 +59,7 @@ def new_pet(request):
 def new_harness(request, pet_id):
     '''register a new harness for a particular pet'''
     pet = Pet.objects.get(id=pet_id)
-    
+
     if request.method != 'POST':
         # No data was submitted; create a blank form.
         form = HarnessForm()
@@ -71,7 +71,7 @@ def new_harness(request, pet_id):
             new_harness.pet = pet
             new_harness.save()
             return HttpResponseRedirect(reverse('ff_app:pet', args=[pet_id]))
-    
+
     context = {'pet': pet, 'form': form}
     return render(request, 'ff_app/new_harness.html', context)
 
@@ -81,11 +81,11 @@ def edit_harness(request, harness_id):
     '''edit an existing harness'''
     harness = Harness.objects.get(id=harness_id)
     pet = harness.pet
-    
+
     #validate requesting user is the pet's owner before making the change.
     if pet.owner != request.user:
         raise Http404
-    
+
     if request.method != 'POST':
         # Initial request; pre-fill form with the current harness information
         form = HarnessForm(instance=harness)
@@ -95,7 +95,7 @@ def edit_harness(request, harness_id):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('ff_app:pet', args=[pet.id]))
-        
+
     context = {'harness': harness, 'pet': pet, 'form': form}
     return render(request, 'ff_app/edit_harness.html', context)
 
@@ -103,11 +103,11 @@ def edit_harness(request, harness_id):
 def edit_pet(request, pet_id):
     '''edit an existing pet'''
     pet = Pet.objects.get(id=pet_id)
-    
+
     #validate requesting user is the pet's owner before making the change.
     if pet.owner != request.user:
         raise Http404
-    
+
     if request.method != 'POST':
         # Initial request; pre-fill form with the current harness information
         form = PetForm(instance=pet)
@@ -117,7 +117,7 @@ def edit_pet(request, pet_id):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('ff_app:pet', args=[pet.id]))
-        
+
     context = {'pet': pet, 'form': form}
     return render(request, 'ff_app/edit_pet.html', context)
 
@@ -138,6 +138,26 @@ def change_password(request):
 def success(request):
     '''successful password change notification'''
     return render(request, 'ff_app/success.html')
-            
+#Bill's delete_harness code
+@login_required
+def delete_harness(request, harness_id):
+    '''delete an existing harness'''
+    harness = Harness.objects.get(id=harness_id)
+    pet = harness.pet
 
-            
+    #validate requesting user is the pet's owner before making the change.
+    if pet.owner != request.user:
+        raise Http404
+
+    if request.method != 'POST':
+        # Initial request; pre-fill form with the current harness information
+        form = HarnessForm(instance=harness)
+    else:
+        # POST data submitted; process the data.
+        form = HarnessForm(instance=harness, data=request.POST)
+        if form.is_valid():
+            harness.delete()
+            return HttpResponseRedirect(reverse('ff_app:pet', args=[pet.id]))
+
+    context = {'harness': harness, 'pet': pet, 'form': form}
+    return render(request, 'ff_app/delete_harness.html', context)
