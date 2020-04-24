@@ -2,6 +2,7 @@
 
 {% block content %}
 	<p> Pet's Name: {{ pet }}<a href="{% url 'ff_app:edit_pet' pet.id %}"><small> edit pet</small></a></p>
+	<p> Pet's Name: {{ pet }}<a href="{% url 'ff_app:delete_pet' pet.id %}"><small> delete pet</small></a></p>
 	<p>Description: {{ pet.description }}</p>
 
  	<p>Harness:</p>
@@ -15,7 +16,7 @@
 			<p>
 				Harness ID: {{ harness.harnessID }} -
 				Date Registered: {{ harness.date_added|date:'M d, Y H:i' }} -
-				<a href="{% url 'ff_app:edit_harness' harness.id %}"><small>edit harness</small></a> 
+				<a href="{% url 'ff_app:edit_harness' harness.id %}"><small>edit harness</small></a>
 				<a href="{% url 'ff_app:delete_harness' harness.id %}"><small>delete harness</small></a>
 			</p>
     	</li>

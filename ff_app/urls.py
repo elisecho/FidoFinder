@@ -26,6 +26,9 @@ urlpatterns = [
 
     # A form for users to edit an existing pet
     path('edit_pet/<int:pet_id>/', views.edit_pet, name='edit_pet'),
+    #Bill_Elise delete pet
+    # A form for users to delete an existing pet
+    path('delete_pet/<int:pet_id>/', views.delete_pet, name='delete_pet'),
 
     #change password page
     path('change_password/', views.change_password, name='change_password'),
