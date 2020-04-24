@@ -162,24 +162,24 @@ def delete_harness(request, harness_id):
     context = {'harness': harness, 'pet': pet, 'form': form}
     return render(request, 'ff_app/delete_harness.html', context)
 
-    @login_required
-    def delete_pet(request, pet_id):
-        '''delete an existing pet'''
-        pet = Pet.objects.get(id=pet_id)
+@login_required
+def delete_pet(request, pet_id):
+    '''delete an existing pet'''
+    pet = Pet.objects.get(id=pet_id)
 
-        #validate requesting user is the pet's owner before making the change.
-        if pet.owner != request.user:
-            raise Http404
+    #validate requesting user is the pet's owner before making the change.
+    if pet.owner != request.user:
+        raise Http404
 
-        if request.method != 'POST':
-            # Initial request; pre-fill form with the current harness information
-            form = PetForm(instance=pet)
-        else:
-            # POST data submitted; process the data.
-            form = PetForm(instance=pet, data=request.POST)
-            if form.is_valid():
-                pet.delete()
-                return HttpResponseRedirect(reverse('ff_app:pet', args=[pet.id]))
+    if request.method != 'POST':
+        # Initial request; pre-fill form with the current harness information
+        form = PetForm(instance=pet)
+    else:
+        # POST data submitted; process the data.
+        form = PetForm(instance=pet, data=request.POST)
+        if form.is_valid():
+            pet.delete()
+            return HttpResponseRedirect(reverse('ff_app:pets'))
 
-        context = {'pet': pet, 'form': form}
-        return render(request, 'ff_app/delete_pet.html', context)
+    context = {'pet': pet, 'form': form}
+    return render(request, 'ff_app/delete_pet.html', context)
