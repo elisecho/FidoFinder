@@ -3,11 +3,20 @@ from django.contrib.auth.models import User
 #test
 # Data models/Classes for the finding fido application.
 
+#Drop down list for pet disabilities
+DISABILITIES = (
+    ('blind','blind'),
+    ('deaf','deaf'),
+    ('blind and deaf','blind and deaf'),
+    ('none','none'),
+)
+
 class Pet(models.Model):
     '''A model of a Pet'''
     name = models.CharField(max_length=50)
     date_added = models.DateTimeField(auto_now_add=True)
     description = models.CharField(max_length=200)
+    disabilities = models.CharField(max_length=20, choices=DISABILITIES, default='none')
     owner = models.ForeignKey(User, on_delete = models.CASCADE)
     
     def __str__(self):

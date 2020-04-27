@@ -4,8 +4,8 @@
 	<p> Pet's Name: {{ pet }} - <a href="{% url 'ff_app:edit_pet' pet.id %}"><small> edit pet</small></a> -
 	<a href="{% url 'ff_app:delete_pet' pet.id %}"><small> delete pet</small></a></p>
 	<p>Description: {{ pet.description }}</p>
+	<p>Disabilities: {{ pet.disabilities }}</p>
 
- 	<p>Harness:</p>
  	<p>
  		<a href="{% url 'ff_app:new_harness' pet.id %}">register a new harness</a>
  	</p>
