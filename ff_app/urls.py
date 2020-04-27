@@ -35,4 +35,7 @@ urlpatterns = [
 
     #successful password change notice
     path('success/', views.success, name='success'),
+    
+    #custom error page for when a user tries to access someone elses pet
+    path('wrong_pet/', views.wrong_pet, name='wrong_pet')
 ]

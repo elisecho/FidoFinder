@@ -29,11 +29,16 @@ def pet(request, pet_id):
 
     # Validate the pet belongs to the logged in user before returning data
     if pet.owner != request.user:
-        raise Http404
+        return render(request, 'ff_app/wrong_pet.html')
 
     harnesses = pet.harness_set.order_by('-date_added')
     context = {'pet': pet, 'harnesses': harnesses}
     return render(request, 'ff_app/pet.html', context)
+
+@login_required
+def wrong_pet(request):
+    '''custom error page for when someone is being naughty'''
+    return render(request, 'ff_app/wrong_pet.html')
 
 
 @login_required
