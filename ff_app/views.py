@@ -201,7 +201,7 @@ class LocationList(APIView):
     # used to get all the locations in the database
     def get(self, request):
         locations1= Location.objects.all()
-        serializer=LocationSerializer(locations1, many=True)
+        serializer=LocationSerializer(locations1, many=True, context={'request': request})
         return Response(serializer.data)
     
     # used to add a location to the database
