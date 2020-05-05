@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     
     # Third Party Apps
     'bootstrap4',
+    'rest_framework',
     
     # Finding Fido applications
     'ff_app',
@@ -152,5 +153,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-    
-    
+
+''' if we want to set page size limits we can uncomment this block    
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+'''

@@ -1,11 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 
-from .models import Pet, Harness
+from .models import Pet, Harness, Location
 from .forms import PetForm, HarnessForm
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import LocationSerializer
+from django.template.context_processors import request
 
 # Create your views here.
 
@@ -188,3 +194,17 @@ def delete_pet(request, pet_id):
 
     context = {'pet': pet, 'form': form}
     return render(request, 'ff_app/delete_pet.html', context)
+
+# API Functionality follows
+class LocationList(APIView):
+    
+    # used to get all the locations in the database
+    def get(self, request):
+        locations1= Location.objects.all()
+        serializer=LocationSerializer(locations1, many=True)
+        return Response(serializer.data)
+    
+    # used to add a location to the database
+    def post(self):
+        pass
+

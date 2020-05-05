@@ -1,5 +1,6 @@
-from django.urls import path
+from django.urls import include, path
 from . import views
+from rest_framework.urlpatterns import format_suffix_patterns
 
 app_name = 'ff_app'
 urlpatterns = [
@@ -37,5 +38,9 @@ urlpatterns = [
     path('success/', views.success, name='success'),
     
     #custom error page for when a user tries to access someone elses pet
-    path('wrong_pet/', views.wrong_pet, name='wrong_pet')
+    path('wrong_pet/', views.wrong_pet, name='wrong_pet'),
+    
+    #API for adding a pet's location
+    path('locations/', views.LocationList.as_view()),
+    
 ]

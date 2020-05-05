@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+
 #test
 # Data models/Classes for the finding fido application.
 
@@ -28,6 +29,18 @@ class Harness(models.Model):
     pet = models.ForeignKey(Pet, on_delete = models.CASCADE)
     date_added = models.DateTimeField(auto_now_add=True)
     harnessID = models.CharField(max_length=100, unique=True)
+
     def __str__(self):
         '''return a string representing a harness'''
         return self.harnessID
+    
+class Location(models.Model):
+    '''A model referencing a pet's location'''
+    harness = models.ForeignKey(Harness, on_delete = models.CASCADE)
+    timeStamp = models.DateTimeField(auto_now_add=True)
+    lat = models.IntegerField()
+    long = models.IntegerField()
+    
+    def __str__(self):
+        '''return a string representing a location'''
+        return "harness: " + self.harness.harnessID + ", date/time: " + str(self.timeStamp) + ", lat: " + str(self.lat) + ", long: " + str(self.long)
