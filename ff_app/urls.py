@@ -48,5 +48,8 @@ urlpatterns = [
     
     #API for adding a pet's location
     path('locations/', views.LocationList.as_view()),
+    
+    #Random pet finder that uses the Petfinder API
+    path('random_pet_finder/', views.random_pet_finder, name='random_pet_finder'),
 
 ]

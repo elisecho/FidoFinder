@@ -12,6 +12,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import LocationSerializer
 from django.template.context_processors import request
+import petpy
 
 # Create your views here.
 
@@ -240,4 +241,13 @@ class LocationList(APIView):
              serializer.save()
              return Response(serializer.data, status=status.HTTP_201_CREATED)
          return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#Petfinder API
+def random_pet_finder(request):
+    pf = petpy.Petfinder(key="cSsIbBmTYRT3LOwOccdgcIoec9iLmZCfqTnWylxDD7R2BLFnwo", secret="AxwDvPFnx68TIeKYyT44wcKzxAe4B0nT5XiCV39F")
+    dog_breeds = pf.breeds('dog')
+    cat_breeds = pf.breeds('cat')
+    context = {'dog_breeds': dog_breeds, 'cat_breeds': cat_breeds}
+    return render(request, 'ff_app/random_pet_finder.html', context)
+
 
