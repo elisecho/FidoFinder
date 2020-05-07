@@ -1,0 +1,12 @@
+{% extends 'ff_app/base.html' %} 
+
+{% block content %}
+	<p>Add a New Pet:</p>
+	
+	<form action="{% url 'ff_app:new_pet' %}" method='post'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name="submit">add pet</button>
+	</form>
+
+{% endblock content %}
