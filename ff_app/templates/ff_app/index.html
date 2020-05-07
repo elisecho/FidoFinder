@@ -12,17 +12,40 @@
 
 {% block content %}
 	{% load static %}
-	<p><b>Finding your fido has never been so much fun!</b></p>
-	<p>A <a href="https://www.mc3.edu/">Montgomery County Community College</a> CIS111b Project.</p>
-	<p><b><u>Our Team (in no particular order)</p></b></u>
-	<p>Elise Chokola - aka The Project Manager/Cat Herder!</p>
-	<p>Parth Shah - our Soldering Savant!</p>
-	<p>Kevin Buss - The Electronics Guru!</p>
-	<p>William Lingenfelter - Jack of all Trades and Master of None!</p>
-	<p>Sean Dalnodar - Python Wrestler!</p>
-
+	{% load bootstrap4 %}
+	<p align='center'><b>Finding your fido has never been so much fun!</b></p>
+	<h2 align='center'>A <a href="https://www.mc3.edu/">Montgomery County Community College</a> CIS111b Project.</h2>
+	</br>
+	<h4 align='center'>Our Team</h4>
+	<table class="table">
+	  <tr>
+	    <th>Team Member</th>
+	    <th>Role</th>
+	  </tr>
+	  <tr>
+	    <td>Elise Chokola</td>
+	    <td>Project Manager/Cat Herder</td>
+	  </tr>
+	  <tr>
+	    <td>Parth Shah</td>
+	    <td>Soldering Savant</td>
+	  </tr>
+	  <tr>
+	    <td>Kevin Buss</td>
+	    <td>Electronics Guru</td>
+	  </tr>  
+	  <tr>
+	    <td>William Lingenfelter</td>
+	    <td>Jack of all Trades</td>
+	  </tr>
+	  <tr>
+	    <td>Sean Dalnodar</td>
+	    <td>Python Wrestler</td>
+	  </tr>    
+	</table>
+</br>
 <div>
-	<p><u><b>About our Project</b></u></p>
+	<h4 align='center'><b>About our Project</b></h4>
 	<p>
 		The purpose of our web app is to provide users with an interface to their <b>“Finding Fido Smart Harness”</b> (working title). A harness designed to
 		assist pets with special needs (hearing/sight impaired).  The harness provides the pet with a slight vibration when their name is called and sends navigational
