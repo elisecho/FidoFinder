@@ -1,0 +1,19 @@
+{% extends 'ff_app/base.html' %}
+
+{% block content %}
+
+<div>	
+	This functionality is still under construction.  To view a user's details please log in as an administrator.
+</div>
+</br>
+
+	<p>First Name: {{ owner.first_name }}</p>
+	<p>Last Name: {{ owner.last_name }}</p>
+	<p>Address 1: {{ owner.address1 }}</p>
+	<p>Address 2: {{ owner.address2 }}</p>
+	<p>City: {{ owner.city }}</p>	
+	<p>State: {{ owner.state }}</p>
+	<p>ZIP Code: {{ owner.zip }}</p>
+	<p>Phone: {{ owner.phone_number }}</p>
+
+{% endblock content %}

@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 
-from .models import Pet, Harness, Location
+from .models import Pet, Harness, Location, Owner
 from .forms import PetForm, HarnessForm
 
 from rest_framework.views import APIView
@@ -194,6 +194,35 @@ def delete_pet(request, pet_id):
 
     context = {'pet': pet, 'form': form}
     return render(request, 'ff_app/delete_pet.html', context)
+
+@login_required
+def owner_details(request):
+    '''Show the the details of the logged in user'''
+    owner = Owner.objects.filter(user=request.user)
+    context = {'owner': owner}
+    return render(request, 'ff_app/owner_details.html', context)
+
+@login_required
+def edit_owner_details(request, owner_id):
+    '''edit the owner's details'''
+    owner = Owner.objects.get(id=owner_id)
+
+    #validate requesting user is the is correct before making the change.
+    if owner.user != request.user:
+        raise Http404
+
+    if request.method != 'POST':
+        # Initial request; pre-fill form with the current harness information
+        form = OwnerForm(instance=owner)
+    else:
+        # POST data submitted; process the data.
+        form = OwnerForm(instance=owner, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('ff_app:owner_details', args=[owner.id]))
+
+    context = {'owner': owner, 'form': form}
+    return render(request, 'ff_app/edit_owner_details.html', context)
 
 # API Functionality follows
 class LocationList(APIView):

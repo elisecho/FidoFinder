@@ -40,7 +40,13 @@ urlpatterns = [
     #custom error page for when a user tries to access someone elses pet
     path('wrong_pet/', views.wrong_pet, name='wrong_pet'),
     
+    #show owner's details
+    path('owner_details/', views.owner_details, name='owner_details'),
+    
+    #edit owner's dtails
+    path('edit_owner_details/', views.edit_owner_details, name='edit_owner_details'),
+    
     #API for adding a pet's location
     path('locations/', views.LocationList.as_view()),
-    
+
 ]
