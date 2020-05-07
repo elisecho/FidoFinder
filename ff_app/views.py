@@ -12,7 +12,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import LocationSerializer
 from django.template.context_processors import request
-import petpy
+import petpy, requests, json
 
 # Create your views here.
 
@@ -244,9 +244,21 @@ class LocationList(APIView):
 
 #Petfinder API
 def random_pet_finder(request):
+    #Establish authentication with Petfinder's API using our API key and Secret they provided us and assigning the token to a
+    #variable "pf"
     pf = petpy.Petfinder(key="cSsIbBmTYRT3LOwOccdgcIoec9iLmZCfqTnWylxDD7R2BLFnwo", secret="AxwDvPFnx68TIeKYyT44wcKzxAe4B0nT5XiCV39F")
-    dog_breeds = pf.breeds('dog')
-    cat_breeds = pf.breeds('cat')
+    #Pull a list of dog breeds from Petfinder's API and refortmat the output from json to a String.
+    dog_breeds = str(pf.breeds('dog'))
+    #strip json characters from the beginning of the string
+    dog_breeds = dog_breeds.strip("{'breeds': {'dog': [")
+    #strip json characters from the end of the string
+    dog_breeds = dog_breeds.rstrip("]}}")
+    #Pull a list of cat breeds from Petfinder's API and refortmat the output from json to a String.        
+    cat_breeds = str(pf.breeds('cat'))
+    #strip json characters from the beginning of the string    
+    cat_breeds = cat_breeds.strip("{'breeds': {'cat': [")
+    #strip json characters from the end of the string    
+    cat_breeds = cat_breeds.rstrip("]}}")    
     context = {'dog_breeds': dog_breeds, 'cat_breeds': cat_breeds}
     return render(request, 'ff_app/random_pet_finder.html', context)
 

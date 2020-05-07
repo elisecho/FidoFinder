@@ -12,21 +12,24 @@
 
 {% block content %}
 	{% load static %}
-	<p>Finding your fido has never been so much fun!</p>
-	<p>A MontCo CIS111b Project.</p>
+	<p><b>Finding your fido has never been so much fun!</b></p>
+	<p>A <a href="https://www.mc3.edu/">Montgomery County Community College</a> CIS111b Project.</p>
 
 <div>
 	<p>
 		The purpose of our web app is to provide users with an interface to their “Finding Fido Smart Harness” (working title).  
 		Their harness communicates to the web application via a REST API.  Our API is up and running; however, we have run into hardware 
 		difficulties with our Arduino boards and GPS modules.  Because of these issues we have not successfully sent data from the harness 
-		to our API.  You can still create test data via the webapp’s administrative pages and then view this data in json format by navigating 
-		to https://finding-fido.herokuapp.com/locations/ in your browser.  Our API does not require authentication or an API key at this time.
+		to our API.  You can still create test data via the webapp’s administrative pages or through our Django REST API's page.  You can access the
+		API by navigating to the "Finding Fido Harness API" option in the above navigation bar.
+	</p>
+	<p>	
+		Our API does not require authentication at this time... so play nice!
 	</p>
 	<p>	
 		Since we are still working through several challenges with our “Harness to WebApp” API communications we implemented some additional API 
 		functionality/calls in our application to satisfy this project’s API requirement.  We registered our project with petfinder.com and obtained 
-		an API key from them so we can query their API to find pets who are waiting for adoption.  To view this integration with petfinder’s API please 
+		an API key from them so we can query their services about pets who are waiting for adoption.  To view this integration with petfinder’s API please 
 		use the “petfinder_API” drop down menu in the web application’s tool bar while logged into the web app.
 	</p>
 	<p>
@@ -35,12 +38,8 @@
 		message boards (not yet created).
 	</p>
 	<p>
-		We opted to use the Django Web Framework as our driving technology behind our application.  Django is a “high-level Python Web framework that 
-		encourages rapid development and clean, pragmatic design.”
-	</p>
-	<p>
 		For version control we use GitHub.  Our repository is located @ https://github.com/elisecho/FidoFinder
-		Please visit this repository for a full review of our web application’s code.  Please use the final-branch.
+		Please visit this repository for a full review of our web application’s code.  Please use the final-branch for our most up to date version.
 	</p>
 
 {% endblock content %}

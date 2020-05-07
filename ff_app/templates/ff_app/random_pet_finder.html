@@ -1,9 +1,11 @@
 {% extends 'ff_app/base.html' %}
 
 {% block content %}
-	<p> Current Dog breeds that are looking for adoption include:</p> 
+{% load bootstrap4 %}
+	<p> For more information about adopting a new friend, please visit <a href="https://petfinder.com">Petfinder.com</a> </p>
+	<p> They have many breeds of cats and dogs just waiting for a new home! </p>
+	<p><u><b>Current listings include the following dog breeds:</b></u></p> 
 	<p> {{ dog_breeds }} </p>
-	<p> Cat breeds that are available for adoption include:</p> 
+	<p><u><b>Cat breeds that are available for adoption include:</b></u></p> 
 	<p> {{ cat_breeds }} </p>
-	<p> For more information and/or to get help with adopting your new friend, please go to petfinder.com </p>
 {% endblock content %}
