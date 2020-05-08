@@ -1,27 +1,30 @@
 {% extends 'ff_app/base.html' %}
 
 {% block content %}
-	<p> Pet's Name: {{ pet }}<a href="{% url 'ff_app:edit_pet' pet.id %}"><small> edit pet</small></a></p>
-	<p> Pet's Name: {{ pet }}<a href="{% url 'ff_app:delete_pet' pet.id %}"><small> delete pet</small></a></p>
-	<p>Description: {{ pet.description }}</p>
+	<ul class='list-group list-group-flush'>
+	
+		<li class='list-group-item'> Pet's Name: {{ pet }}<a href="{% url 'ff_app:edit_pet' pet.id %}"><small> edit pet -</small></a>
+							 <a href="{% url 'ff_app:delete_pet' pet.id %}"><small> delete pet</small></a></li>
+		<li class='list-group-item'>Description: {{ pet.description }}</li>
+		<li class='list-group-item'>Disabilities: {{ pet.disabilities }}</li>
 
- 	<p>Harness:</p>
- 	<p>
- 		<a href="{% url 'ff_app:new_harness' pet.id %}">register a new harness</a>
- 	</p>
+ 		<li class='list-group-item'>Harness belonging to {{ pet }}:</li>
+ 		
+ 	</br>
+ 	<p><a href="{% url 'ff_app:new_harness' pet.id %}">register a new harness</a></p>
 
-  	<ul>
+  	<ul class='list-group'>
   	{% for harness in harnesses %}
-		<li>
+		<li class='list-group-item'>
 			<p>
 				Harness ID: {{ harness.harnessID }} -
 				Date Registered: {{ harness.date_added|date:'M d, Y H:i' }} -
-				<a href="{% url 'ff_app:edit_harness' harness.id %}"><small>edit harness</small></a>
-				<a href="{% url 'ff_app:delete_harness' harness.id %}"><small>delete harness</small></a>
+				<a href="{% url 'ff_app:edit_harness' harness.id %}"><small>edit harness -</small></a>
+				<a href="{% url 'ff_app:delete_harness' harness.id %}"><small> delete harness</small></a>
 			</p>
     	</li>
   	{% empty %}
-		<li>
+		<li class='list-group-item'>
 			There are no harnesses registered for this pet yet.
     	</li>
   	{% endfor %}

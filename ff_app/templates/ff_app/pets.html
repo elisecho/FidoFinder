@@ -1,17 +1,17 @@
 {% extends "ff_app/base.html" %} 
 
 {% block content %}
-	<p>Registered Pets</p>
-  	<ul>
+	<p>Your pets: </p>
+  	<ul class='list-group list-group-flush'>
     	{% for pet in pets %}
-      		<li>
+      		<li class='list-group-item'>
       			<a href="{% url 'ff_app:pet' pet.id %}">{{ pet }}</a>
       		</li>
     	{% empty %}
-			<li>No pets have been registered yet.</li> 
+			<li class='list-group-item'>No pets have been registered yet.... If you want one you should check out <a href="https://petfinder.com">Petfinder.</a></li> 
 		{% endfor %}
   	</ul>
-  	
+  	</br>
   	<a href="{% url 'ff_app:new_pet' %}">Add a new pet.</a>
   	
 {% endblock content %}
