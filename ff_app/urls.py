@@ -54,6 +54,6 @@ urlpatterns = [
     path('random_pet_finder/', views.random_pet_finder, name='random_pet_finder'),
 
     #Map path
-    path('', include('maps.urls')),
+    path('maps', include('maps.urls')),
 
 ]
