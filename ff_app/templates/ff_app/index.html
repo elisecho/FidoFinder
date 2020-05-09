@@ -12,7 +12,68 @@
 
 {% block content %}
 	{% load static %}
-	<p>Finding your fido has never been so much fun!</p>
-	<p>A MontCo CIS111b Project.</p>
+	{% load bootstrap4 %}
+	<p align='center'><b>Finding your fido has never been so much fun!</b></p>
+	<h4 align='center'>A <a href="https://www.mc3.edu/">Montgomery County Community College</a> CIS111b Project.</h4>
+	</br>
+	<h4 align='center'>Our Team</h4>
+	<table class="table">
+	  <tr>
+	    <th>Team Member</th>
+	    <th>Role</th>
+	  </tr>
+	  <tr>
+	    <td>Elise Chokola</td>
+	    <td>Project Manager/Cat Herder</td>
+	  </tr>
+	  <tr>
+	    <td>Parth Shah</td>
+	    <td>Soldering Savant</td>
+	  </tr>
+	  <tr>
+	    <td>Kevin Buss</td>
+	    <td>Electronics Guru</td>
+	  </tr>  
+	  <tr>
+	    <td>William Lingenfelter</td>
+	    <td>Jack of all Trades</td>
+	  </tr>
+	  <tr>
+	    <td>Sean Dalnodar</td>
+	    <td>Python Wrestler</td>
+	  </tr>    
+	</table>
+</br>
+<div>
+	<h4 align='center'><b>About our Project</b></h4>
+	<p>
+		The purpose of our web app is to provide users with an interface to their <b>“Finding Fido Smart Harness”</b> (working title). A harness designed to
+		assist pets with special needs (hearing/sight impaired).  The harness provides the pet with a slight vibration when their name is called and sends navigational
+		data to this webapp so owners can track where their pet has been while wearing the harness. The harness communicates to this web application via a REST API.  
+		Our API is up and running; however, we have run into hardware difficulties with our Arduino boards and GPS modules.  Because of these issues we have not 
+		successfully sent data from the harness to our API; however, you can create and view test locational data via the webapp’s administrative pages or through 
+		our REST API's "Locations" page (available in the above dropdown menu).
+	</p>
+	<p>	
+		Our API does not require authentication at this time... so play nice!  Eventually each harness will use unique API Keys and OAUTH tokens for secure communications.
+	</p>
+	<p>	
+		Since we are still working through several challenges with our “Harness to WebApp” API communications we implemented some additional API 
+		functionality/calls in our application to satisfy this project’s API requirement.  We registered our project with petfinder.com and obtained 
+		an API key from them so we can query their services about pets who are waiting for adoption.  To view this integration with petfinder’s API please 
+		use the “petfinder_API” drop down menu in the web application’s tool bar while logged into the web app.
+	</p>
+	<p>
+		Once authenticated a user can register new pets and harnesses and edit or delete either of these.  Users only have access to see their own pets 
+		and harnesses.  In the future we would like to add the ability for users to share this information with each other and to communicate via internal 
+		message boards (not yet created).
+	</p>
+	<p>
+		For version control we use GitHub.  Our repository is located @ https://github.com/elisecho/FidoFinder
+		Please visit this repository for a full review of our web application’s code.  Please use the final-branch for our most up to date version.
+	</p>
+	<p align='center'> 
+		 Thank you for visiting our humble project!
+	</p>
 
 {% endblock content %}
