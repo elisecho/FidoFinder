@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Third Party Apps
     'bootstrap4',
     'rest_framework',
+    'maps',
     
     # Finding Fido applications
     'ff_app',
