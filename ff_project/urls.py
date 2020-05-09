@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls', namespace='users')),
     path('', include('ff_app.urls')),
+    path('maps', include('maps.urls'))
 ]

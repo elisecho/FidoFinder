@@ -1,13 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
+{% extends 'ff_app/base.html' %} 
+
+{% block content %}
     <title>Interactive maps for Django web apps</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
   </head>
   <body>
-   <h1>Map time!</h1>
-   <div id='map' style='width: 400px; height: 300px;'></div>
+   <h1 align='center'>Look at all the places your pet has been!</h1>
+   <p align='center'>This functionality is under construction.  Eventually your harness will send it's location to our API so you can look
+   		at all the cool places where your pet has travelled!</p>
+   <div align='center'>		
+   	<div id='map' style='width: 400px; height: 300px;'></div>
+   </div>
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiZWxpc2VjaG8iLCJhIjoiY2s5enA2M3MxMGNtNjNkbHR4azJoc3ZtMSJ9.SP6E-hmpTb2H3R8hCAsY0Q';
     var map = new mapboxgl.Map({
@@ -15,5 +19,5 @@
       style: 'mapbox://styles/mapbox/streets-v11'
     });
   </script>
-  </body>
-</html>
+
+{% endblock content %}
