@@ -2,6 +2,7 @@ from django.urls import include, path
 from . import views
 from rest_framework.urlpatterns import format_suffix_patterns
 
+
 app_name = 'ff_app'
 urlpatterns = [
     # ff Home Page
@@ -51,5 +52,8 @@ urlpatterns = [
     
     #Random pet finder that uses the Petfinder API
     path('random_pet_finder/', views.random_pet_finder, name='random_pet_finder'),
+
+    #Map path
+    path('', include('maps.urls')),
 
 ]
