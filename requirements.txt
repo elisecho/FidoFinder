@@ -10,7 +10,7 @@ dj-database-url==0.5.0
 dj-static==0.0.6
 Django==2.2.13
 django-bootstrap4==1.0.1
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 Flask==1.1.1
 googleapis-common-protos==1.51.0
 grpcio==1.27.2
